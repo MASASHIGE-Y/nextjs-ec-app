@@ -6,9 +6,9 @@ import { z } from 'zod';
 
 export const UserSchema = z.object({
   id: z.number().int(),
-  email: z.email().max(255),
-  password: z.string().min(1).max(30).regex(/[a-zA-Z]/, {message: "英字を含めてください"}).regex(/[0-9]/, {message: "数字を含めてください"}),
-  name: z.string().min(1).max(30),
+  email: z.string(),
+  password: z.string(),
+  name: z.string(),
   imageUrl: z.string().nullable(),
   createdAt: z.coerce.date(),
   updatedAt: z.coerce.date(),

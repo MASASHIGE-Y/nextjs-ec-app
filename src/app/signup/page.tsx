@@ -1,35 +1,13 @@
-import React from 'react'
+import { AuthCardLayout } from "@/components/auth/AuthCardLayout"
+import { SignupForm } from "@/components/auth/SignupForm"
 
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
-import SignupForm from '@/features/auth/components/SignupForm'
-
-const SignupPage = () => {
+export default function SignupPage() {
   return (
-    <div>
-      <Card>
-  <CardHeader>
-    <CardTitle>ユーザー登録</CardTitle>
-    <CardDescription>ユーザーを作成してください</CardDescription>
-    <CardAction>Card Action</CardAction>
-  </CardHeader>
-  <CardContent>
-    <SignupForm />
-  </CardContent>
-  <CardFooter>
-    <p>Card Footer</p>
-  </CardFooter>
-</Card>
-    </div>
+    <AuthCardLayout
+      title="ユーザー登録"
+      description="ユーザーを作成してください"
+    >
+      <SignupForm />
+    </AuthCardLayout>
   )
 }
-
-export default SignupPage

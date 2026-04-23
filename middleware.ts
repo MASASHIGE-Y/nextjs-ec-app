@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+import { verifyJWT } from "@/lib/session"
 
-export function middleware(request: NextRequest) {
-  const userId = request.cookies.get("userId")?.value
+export async function middleware(request: NextRequest) {
+  const token = request.cookies.get("auth-token")?.value
 
-  if (!userId && request.nextUrl.pathname.startsWith("/dashboard")) {
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", request.url))
+  }
+
+  try {
+    await verifyJWT(token)
+  } catch {
     return NextResponse.redirect(new URL("/login", request.url))
   }
 
